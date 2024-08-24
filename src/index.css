@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Yrsa:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+/* css link  */
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&family=Rubik+Vinyl&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+body{
+  background-color: rgb(1, 12, 24);
+  /* color: #fff; */
+}
+
+
+
+:root {
+  /*========== Colors ==========*/
+  --body-color: #393937;
+  --accent-color: rgba(255, 255, 255, 0.881);
+  --white-color: #000000;
+  
+
+
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+
+
+
+/* Button Animation Styles */
+.box__link {
+  position: relative;
+  display: inline-block;
+  padding: 20px 30px;
+  color: var(--accent-color);
+  overflow: hidden;
+  transition: 0.5s;
+  border-radius: 5px;
+}
+
+.box__link span {
+  position: absolute;
+  display: block;
+}
+
+.box__link span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-color));
+  animation: btn-anim1 1s linear infinite; 
+  
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+
+.box__link span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--accent-color));
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: 0.25s; 
+  
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,
+  100% {
+    top: 100%;
+  }
+}
+
+.box__link span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, var(--accent-color));
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: 0.5s; 
+  
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,
+  100% {
+    right: 100%;
+  }
+}
+
+.box__link span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, var(--accent-color));
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: 0.75s; 
+  
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,
+  100% {
+    bottom: 100%;
+  }
+}
+
+.box__link:hover {
+  background-color: var(--accent-color);
+  color: var(--white-color);
+  box-shadow: var(--box-shadow);
+}
+
+
+
+
+
+.navbar{
+  background-color: rgba(15, 23, 42, 0.503) !important;
+}
+
+
+/* Add this in your CSS file */
+.hover-letter-spacing {
+  transition: letter-spacing 0.3s ease;
+}
+.hover-letter-spacing:hover {
+  letter-spacing: 2px; /* Adjust this value as needed */
+  
+}
+
+.search-box{
+  position: relative;
+
+}
+
+.search-input {
+  padding: 10px;
+  width: 35px;
+  height: 35px;
+  background: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.941);
+  border-radius: 50px;
+  
+  box-sizing: border-box;
+  font-size: 20px;
+  color: #ffffff;
+  outline: none;
+  font-size: 15px;
+  transition: .5s;
+}
+.search-box:hover input{
+  width: 200px;
+  background: #ffffff08;
+  border-radius: 10px;
+}
+.search-box button{
+  position: absolute;
+  top: 50%;
+  right: -2px;
+  transform: translate(-50%,-50%);
+  font-size: 20px;
+  color: #ffffffa0;
+  transition: .2s;
+  cursor: pointer;
+}
+
+/* Media Query for Mobile View */
+@media (max-width: 768px) {
+  .search-input {
+    width: 100px; /* Adjust width for mobile */
+    height: 40px; /* Adjust height for mobile */
+    font-size: 14px; /* Adjust font size for mobile */
+  }
+
+  .search-box:hover .search-input {
+    width: 150px; /* Adjust width on hover for mobile */
+    background: #ffffff08;
+    border-radius: 10px;
+  }
+
+  .search-box button {
+    font-size: 18px; /* Adjust button font size for mobile */
+  }
+}
+
+/* home page css  */
+.flip-container {
+  width: 100%;
+  height: 360px;
+  margin: auto;
+  perspective: 1000px; /* This gives the 3D space to the container */
+}
+
+.flipper {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.9s;
+}
+
+.flip-container:hover .flipper,
+.flip-container.hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  width: 100%;
+  height: 300px;
+  backface-visibility: hidden;
+  color: #ffffff;
+  border-radius: 15px;
+  position: absolute;
+  background-color: rgba(15, 23, 42, 0.503) !important;
+  top: 0;
+  left: 0;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+/* Price slide effect */
+
+
+.flip-container:hover .price-slide {
+  bottom: 0; /* Slide up on hover */
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+.btn-12{
+  position: relative;
+  right: 20px;
+  bottom: 20px;
+  border:none;
+  box-shadow: none;
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  -webkit-perspective: 230px;
+  perspective: 230px;
+}
+.btn-12 span {
+  background: rgb(0, 0, 0);
+background: linear-gradient(0deg, rgba(189, 189, 189, 0.137) 0%, rgba(255, 255, 255, 0.601) 100%);
+  display: block;
+  position: absolute;
+  width: 130px;
+  height: 40px;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  border-radius: 5px;
+  margin:0;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.btn-12 span:nth-child(1) {
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  -webkit-transform: rotateX(90deg);
+  -moz-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  -webkit-transform-origin: 50% 50% -20px;
+  -moz-transform-origin: 50% 50% -20px;
+  transform-origin: 50% 50% -20px;
+}
+.btn-12 span:nth-child(2) {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -webkit-transform-origin: 50% 50% -20px;
+  -moz-transform-origin: 50% 50% -20px;
+  transform-origin: 50% 50% -20px;
+}
+.btn-12:hover span:nth-child(1) {
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+.btn-12:hover span:nth-child(2) {
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+ color: transparent;
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+}
+
+
+
+
+/* sdsdsd  */
+
+/* Hide the default up and down arrows in number input */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Hide the arrows in Firefox */
+}
+
+
+/* //...............footer css  */
+.footer{
+  background-color: rgb(8,18,33) !important;
+}
