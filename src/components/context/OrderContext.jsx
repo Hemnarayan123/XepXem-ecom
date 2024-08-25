@@ -8,7 +8,7 @@ export const OrderProvider = ({ children }) => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('http://localhost:1000/api/v1/order', {
+      const response = await axios.get('https://xepxem-ecom-backend.vercel.app/api/v1/order', {
         headers: { 'auth-token': localStorage.getItem('token') }
       });
       setOrders(response.data);
@@ -19,7 +19,7 @@ export const OrderProvider = ({ children }) => {
 
   const placeOrder = async () => {
     try {
-      const response = await axios.post('http://localhost:1000/api/v1/order', {}, {
+      const response = await axios.post('https://xepxem-ecom-backend.vercel.app/api/v1/order', {}, {
         headers: { 'auth-token': localStorage.getItem('token') }
       });
       setOrders([...orders, response.data.order]);

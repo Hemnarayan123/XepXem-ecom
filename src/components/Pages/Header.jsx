@@ -33,7 +33,7 @@ const Header = () => {
     e.preventDefault();
     try {
       const response = await axios.get(
-        `http://localhost:1000/api/v1/search/${search}`
+        `https://xepxem-ecom-backend.vercel.app/api/v1/search/${search}`
       );
       setSearch({ ...search, result: response.data });
       navigate(`/search`);

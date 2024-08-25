@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
 const [products, setProducts] = useState([]);
 
   const fetchProducts = () => {
-    axios.get('http://localhost:1000/api/v1/getProd')
+    axios.get('https://xepxem-ecom-backend.vercel.app/0/api/v1/getProd')
       .then(res => {
         setProducts(res.data.result);
       })

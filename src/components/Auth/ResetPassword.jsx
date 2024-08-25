@@ -13,7 +13,7 @@ function ResetPassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:1000/api/v1/reset_password/${id}/${token}`, { password })
+    axios.post(`https://xepxem-ecom-backend.vercel.app/api/v1/reset_password/${id}/${token}`, { password })
       .then(res => {
         if (res.data.Status === "Success") {
           toast.success("Password reset successfully", {

@@ -78,7 +78,7 @@ const BuyNowPage = () => {
       const stripePromise = await loadStripe(import.meta.env.REACT_APP_STRIPE_PUBLIC_KEY);
       const cartItems = products || [{ product, quantity: quantities[product._id] || 1 }];
       const response = await axios.post(
-        "http://localhost:1000/api/v1/payment",
+        "https://xepxem-ecom-backend.vercel.app/api/v1/payment",
         { cartItems },
         { headers: { "auth-token": token } }
       );

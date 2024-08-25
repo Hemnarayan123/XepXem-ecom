@@ -46,7 +46,7 @@ function Search() {
                 <div className="front text-center rounded-lg ">
                   <img
                     className="w-full h-64 object-cover"
-                    src={`http://localhost:1000/image/${product.image}`}
+                    src={`https://xepxem-ecom-backend.vercel.app/image/${product.image}`}
                     alt={product.name}
                   />
                   <div className="flex justify-between">

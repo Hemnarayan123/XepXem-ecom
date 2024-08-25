@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
 
   const fetchCart = async() => {
     try {
-      const response = await axios.get('http://localhost:1000/api/v1/cart', {
+      const response = await axios.get('https://xepxem-ecom-backend.vercel.app/api/v1/cart', {
         headers: { 'auth-token': token }
       });
       setCart(response.data);
@@ -22,7 +22,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = async (productId, quantity) => {
     try {
-      const response = await axios.post('http://localhost:1000/api/v1/cart', {
+      const response = await axios.post('https://xepxem-ecom-backend.vercel.app/api/v1/cart', {
         productId,
         quantity,
       }, {
@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
   const updateCartItem = async (productId, quantity) => {
     console.log(`Updating product ${productId} to quantity ${quantity}`);
     try {
-      const response = await axios.put('http://localhost:1000/api/v1/cart', {
+      const response = await axios.put('https://xepxem-ecom-backend.vercel.app/api/v1/cart', {
         productId,
         quantity,
       }, {
@@ -58,7 +58,7 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = async (productId) => {
     try {
-      const response = await axios.delete('http://localhost:1000/api/v1/cart', {
+      const response = await axios.delete('https://xepxem-ecom-backend.vercel.app/api/v1/cart', {
         headers: { 'auth-token': token },
         data: { productId },
       });

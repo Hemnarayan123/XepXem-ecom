@@ -41,11 +41,11 @@ function AllProduct() {
     try {
       if (editingProduct) {
         await axios.put(
-          `http://localhost:1000/api/v1/editProd/${editingProduct._id}`,
+          `https://xepxem-ecom-backend.vercel.app/api/v1/editProd/${editingProduct._id}`,
           formData
         );
       } else {
-        await axios.post("http://localhost:1000/api/v1/addProd", formData);
+        await axios.post("https://xepxem-ecom-backend.vercel.app/api/v1/addProd", formData);
       }
       fetchProducts();
       handleCancel();
@@ -68,7 +68,7 @@ function AllProduct() {
 
   const handleDelete = async (id) => {
     await axios
-      .delete(`http://localhost:1000/api/v1/deleteProd/${id}`)
+      .delete(`https://xepxem-ecom-backend.vercel.app/api/v1/deleteProd/${id}`)
       .then((res) => {
         console.log(res);
         fetchProducts();
