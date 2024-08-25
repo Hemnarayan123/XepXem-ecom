@@ -1,6 +1,6 @@
 
 
-const backendUrl = `https://xepxem-ecom-backend.vercel.app/`
+const backendUrl = `https://xepxem-ecom-backend.vercel.app`
 
 
 
