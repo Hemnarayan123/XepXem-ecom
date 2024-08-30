@@ -57,8 +57,10 @@ function Signup() {
 
   return (
     <div className="flex items-center justify-center min-h-screen rgb(25, 22, 22) p-4 sm:p-6 lg:p-8 font-Roboto">
-      <div className="bg-gray-600 p-6 sm:p-8 lg:p-10 rounded shadow-md w-[500px] bg-primbtnhover-0 max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-100">Signup</h2>
+      <div className="bg-gray-600 p-6 sm:p-8 lg:p-10 rounded shadow-lg shadow-gray-400/50 w-[500px] max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-center text-gray-100">
+          Sign-Up
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-100 mb-2" htmlFor="username">
@@ -68,7 +70,8 @@ function Signup() {
               type="text"
               id="username"
               name="username"
-              className="w-full px-3 py-2 border rounded "
+              placeholder="Enter Your Username"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-[#efeded] text-gray-800 shadow-[0px_4px_15px_rgba(255,255,255,0.2)] transform transition-transform duration-200 ease-in-out hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-[#00BCD4]"
               value={formData.username}
               onChange={handleChange}
               required
@@ -82,8 +85,9 @@ function Signup() {
             <input
               type="email"
               id="email"
+              placeholder="Enter Your Email"
               name="email"
-              className="w-full px-3 py-2 border rounded "
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-[#efeded] text-gray-800 shadow-[0px_4px_15px_rgba(255,255,255,0.2)] transform transition-transform duration-200 ease-in-out hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-[#00BCD4]"
               value={formData.email}
               onChange={handleChange}
               required
@@ -98,7 +102,8 @@ function Signup() {
               type={showPassword ? "text" : "password"}
               id="password"
               name="password"
-              className="w-full px-3 py-2 border rounded"
+              placeholder="Enter Your password"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-[#efeded] text-gray-800 shadow-[0px_4px_15px_rgba(255,255,255,0.2)] transform transition-transform duration-200 ease-in-out hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-[#00BCD4]"
               value={formData.password}
               onChange={handleChange}
               required
@@ -109,14 +114,32 @@ function Signup() {
             >
               <span>{showPassword ? <RiEyeLine /> : <RiEyeCloseLine />}</span>
             </div>
+            <style jsx>{`
+              input[type="password"]::-ms-reveal,
+              input[type="password"]::-ms-clear {
+                display: none;
+              }
+            `}</style>
           </div>
-    
+
+          <div className="bg-gray-800 flex py-4 text-center rounded-lg shadow-lg ">
+            <p className="mb-2 text-white text-md font-semibold ">
+              Already Sign Up?
+            </p>
+            <Link
+              to={"/signin"}
+              className="text-blue-400 hover:text-blue-300 font-bold underline mx-3"
+            >
+              Login Now
+            </Link>
+          </div>
+
           <div className="flex items-center justify-center">
             <button
               type="submit"
-              className="p-4 bg-blurr-0 hover:bg-[#006eff8d]    text-gray-200 font-bold py-2 rounded transition duration-300"
+              className=" text-center  px-8 bg-blurr-0 hover:bg-[#006eff8d] border border-gray-100 text-gray-200 font-bold py-2 rounded transition duration-300 mt-3"
             >
-              SignUp
+              Sign Up
             </button>
           </div>
         </form>
@@ -125,4 +148,4 @@ function Signup() {
   );
 }
 
-export default Signup
+export default Signup;

@@ -2,13 +2,13 @@ import React from 'react';
 
 function Contact() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center font-Roboto w-full px-4 py-8 sm:px-6 lg:px-8">
-      <div className="container mx-auto">
-        <div className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg bg-primbtncolor-0">
-          <h2 className="text-2xl font-bold mb-6 text-center">Contact Us</h2>
+    <div className="flex items-center justify-center min-h-screen rgb(25, 22, 22) p-4 sm:p-6 lg:p-8 font-Roboto">
+     
+        <div className="bg-gray-600 p-6 sm:p-8 lg:p-10 rounded shadow-lg shadow-gray-400/50 w-[500px] max-w-md">
+          <h2 className="text-2xl font-bold mb-6 text-center text-gray-200">Contact Us</h2>
           <form>
             <div className="mb-4">
-              <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
+              <label htmlFor="name" className="block text-gray-200 font-medium mb-2">
                 Name
               </label>
               <input
@@ -19,7 +19,7 @@ function Contact() {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+              <label htmlFor="email" className="block text-gray-200 font-medium mb-2">
                 Email
               </label>
               <input
@@ -30,7 +30,7 @@ function Contact() {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
+              <label htmlFor="message" className="block text-gray-200 font-medium mb-2">
                 Message
               </label>
               <textarea
@@ -50,7 +50,7 @@ function Contact() {
             </div>
           </form>
         </div>
-      </div>
+     
     </div>
   );
 }
