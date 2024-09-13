@@ -4,6 +4,7 @@ import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthToken";
 import { GoPlus } from "react-icons/go";
 import { LuMinus } from "react-icons/lu";
+import toast from "react-hot-toast";
 
 const Cart = () => {
   const { cart, updateCartItem, removeFromCart } = useCart();
@@ -12,7 +13,7 @@ const Cart = () => {
 
   if (!cart || !cart.items.length) {
     return (
-      <div className="text-center text-lg font-semibold py-4">
+      <div className="text-center text-gray-200 text-lg font-semibold py-4">
         Your cart is empty
       </div>
     );
@@ -27,6 +28,9 @@ const Cart = () => {
   const handleRemoveItem = (productId) => {
     console.log(`Removing product ${productId} from cart`); // Debug log
     removeFromCart(productId);
+    toast.success("Product remove successfully", {
+      duration: 3000,
+    })
   };
 
   const totalAmount = cart.items.reduce(

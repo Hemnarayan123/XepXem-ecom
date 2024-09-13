@@ -1,16 +1,23 @@
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RiRadioButtonLine, RiRadioButtonFill } from 'react-icons/ri';
 import React, { useState, useEffect } from "react";
+import image1 from '../../assets/banner/img1.webp'
+import image2 from '../../assets/banner/img2_mobile.webp'
+import image3 from '../../assets/banner/img4_mobile.jpg'
+import image4 from '../../assets/banner/img5.webp'
+
+
 
 
 function Slider() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const slides = [
-      { url: 'https://www.shutterstock.com/image-vector/ecommerce-website-banner-template-presents-260nw-2252124451.jpg' },
-      { url: 'https://www.shutterstock.com/image-vector/paper-art-shopping-online-on-260nw-2074005938.jpg' },
-      { url: 'https://www.shutterstock.com/image-vector/online-shopping-on-phone-buy-260nw-2078330851.jpg' },
-      { url: 'https://static.vecteezy.com/system/resources/thumbnails/004/707/493/small/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg' },
+      { url: image1 },
+      { url: image4 },
+      { url: image3 },
+      { url: image2 },
+      
     ];
 
     const prevSlide = () => {
@@ -36,7 +43,7 @@ function Slider() {
             <img
                 src={slides[currentIndex].url}
                 alt={`Slide ${currentIndex}`}
-                className="w-full max-h-96 object-cover rounded-2xl duration-200"
+                className="w-full max-h-96 object-fill rounded-2xl duration-200"
             />
             {/* Left Arrow */}
             <div
