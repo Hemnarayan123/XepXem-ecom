@@ -24,7 +24,7 @@ function AllProduct() {
 
   useEffect(() => {
     fetchProducts();
-  }, [fetchProducts]);
+  }, []);
 
   const handleUpdate = async () => {
     const formData = new FormData();
@@ -45,10 +45,7 @@ function AllProduct() {
           formData
         );
       } else {
-        await axios.post(
-          "https://xepxem-ecom-backend.vercel.app/api/v1/addProd",
-          formData
-        );
+        await axios.post("https://xepxem-ecom-backend.vercel.app/api/v1/addProd", formData);
       }
       fetchProducts();
       handleCancel();
@@ -70,12 +67,15 @@ function AllProduct() {
   };
 
   const handleDelete = async (id) => {
-    try {
-      await axios.delete(`https://xepxem-ecom-backend.vercel.app/api/v1/deleteProd/${id}`);
-      fetchProducts();
-    } catch (error) {
-      console.error("Error deleting product:", error);
-    }
+    await axios
+      .delete(`https://xepxem-ecom-backend.vercel.app/api/v1/deleteProd/${id}`)
+      .then((res) => {
+        console.log(res);
+        fetchProducts();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleCancel = () => {
@@ -105,11 +105,11 @@ function AllProduct() {
   };
 
   const incrementPrice = () => {
-    setPrice((prevPrice) => (Number(prevPrice) || 0) + 1);
+    setPrice(prevPrice => prevPrice + 1);
   };
 
   const decrementPrice = () => {
-    setPrice((prevPrice) => Math.max((Number(prevPrice) || 0) - 1, 0));
+    setPrice(prevPrice => (prevPrice > 0 ? prevPrice - 1 : 0));
   };
 
   return (
@@ -122,8 +122,8 @@ function AllProduct() {
       </button>
 
       {(showForm || editingProduct) && (
-        <div className="bg-white rounded-lg shadow-md p-3 mb-6 mx-auto w-full max-w-md sm:max-w-md md:max-w-lg lg:max-w-2xl">
-          <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-center text-gray-900">
+        <div className="bg-white rounded-lg shadow-md p-3 mb-6 animate-fade-in-up mx-auto w-full max-w-md sm:max-w-md md:max-w-lg lg:max-w-2xl">
+          <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-white text-center">
             {editingProduct ? "Update Product" : "Add Product"}
           </h2>
           <div className="mb-4">
@@ -132,27 +132,27 @@ function AllProduct() {
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md focus:outline-none bg-gray-200 text-gray-900 focus:ring-2 focus:ring-slate-600 mb-4"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none bg-[#ffffff0e] text-white focus:ring-2 focus:ring-slate-600 mb-4"
             />
             <div className="w-full mb-4 relative">
               <input
                 type="number"
                 placeholder="Price"
                 value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 text-gray-900 bg-gray-200 focus:ring-slate-600 pr-16"
+                onChange={(e) => setPrice(Number(e.target.value))}
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 text-white bg-[#ffffff0e] focus:ring-slate-600 pr-16"
                 min="0"
               />
               <div className="absolute right-0 top-0 h-full flex flex-col justify-center me-2">
-                <button
-                  onClick={decrementPrice}
-                  className="px-1 text-xs text-gray-900"
+                <button 
+                  onClick={decrementPrice} 
+                  className="px-1 text-xs text-white"
                 >
                   <FaAngleDoubleDown />
                 </button>
-                <button
-                  onClick={incrementPrice}
-                  className="px-1 text-xs text-gray-900"
+                <button 
+                  onClick={incrementPrice} 
+                  className="px-1 text-xs text-white"
                 >
                   <FaAngleDoubleUp />
                 </button>
@@ -163,7 +163,7 @@ function AllProduct() {
               placeholder="Description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 text-gray-900 bg-gray-200 focus:ring-slate-600 mb-4"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 text-white bg-[#ffffff0e] focus:ring-slate-600 mb-4"
             />
             <select
               value={category}
@@ -171,22 +171,20 @@ function AllProduct() {
                 setCategory(e.target.value);
                 setSubcategory(subcategories[e.target.value][0]);
               }}
-              className="w-full px-4 py-2 border rounded-md text-gray-900 bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-600 mb-4"
+              className="w-full px-4 py-2 border rounded-md text-white bg-[#ffffff0e] focus:outline-none focus:ring-2 focus:ring-slate-600 mb-4"
             >
-              {Object.keys(subcategories).map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                </option>
-              ))}
+              <option value="fashion" className="text-black font-Roboto font-medium bg-primbtncolor-0">Fashion</option>
+              <option value="sports" className="text-black font-Roboto font-medium bg-primbtncolor-0">Sports</option>
+              <option value="gadgets" className="text-black font-Roboto font-medium bg-primbtncolor-0">Gadgets</option>
             </select>
             <select
               value={subcategory}
               onChange={(e) => setSubcategory(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md bg-gray-200 text-gray-900 focus:outline-none focus:ring-2 focus:ring-slate-600 mb-4"
+              className="w-full px-4 py-2 border rounded-md bg-[#ffffff0e] text-white focus:outline-none focus:ring-2 focus:ring-slate-600 mb-4"
             >
-              {subcategories[category].map((sub) => (
-                <option key={sub} value={sub}>
-                  {sub.charAt(0).toUpperCase() + sub.slice(1)}
+              {subcategories[category] && subcategories[category].map((sub) => (
+                <option key={sub} value={sub} className="text-black font-Roboto font-medium bg-primbtncolor-0">
+                  {sub}
                 </option>
               ))}
             </select>
@@ -195,7 +193,7 @@ function AllProduct() {
               id="image"
               accept="image/*"
               onChange={handleFileChange}
-              className="w-full px-4 py-2 border rounded-md text-xs bg-gray-200 text-gray-900 focus:outline-none focus:ring-2 focus:ring-slate-600 mb-4"
+              className="w-full px-4 py-2 border rounded-md text-xs bg-[#ffffff0e] text-white focus:outline-none focus:ring-2 focus:ring-slate-600 mb-4"
             />
             {preview && (
               <div className="mb-4">
@@ -223,10 +221,10 @@ function AllProduct() {
       <div className="shadow-md overflow-hidden">
         <ul className="space-y-3 p-4">
           {products.length > 0 ? (
-            products.map((product) => (
+             products && products.map((product) => (
               <li
                 key={product._id}
-                className="flex flex-col md:flex-row items-center bg-gray-200 rounded-xl p-4 space-y-4 md:space-y-0 md:space-x-4"
+                className="flex flex-col md:flex-row items-center bg-blurr-0 rounded-xl p-4 space-y-4 md:space-y-0 md:space-x-4 animate-fade-in-up"
               >
                 <img
                   src={product.image}
@@ -234,14 +232,12 @@ function AllProduct() {
                   className="w-24 h-20 object-cover md:w-28 md:h-24 mr-0 md:mr-4"
                 />
                 <div className="flex-grow font-Roboto">
-                  <h5 className="text-lg md:text-xl mb-2 text-gray-900">{product.name}</h5>
-                  <p className="text-sm md:text-base text-gray-900 mb-2">
+                  <h5 className="text-lg md:text-xl mb-2 text-gray-100">{product.name}</h5>
+                  <p className="text-sm md:text-base text-white mb-2">
                     Price: ₹<span>{product.price}</span>
                   </p>
-                  <p className="text-sm md:text-base text-gray-900 mb-2">
-                    {product.description}
-                  </p>
-                  <p className="text-sm md:text-base text-gray-900 mb-2">
+                  <p className="text-sm md:text-base text-gray-100 mb-2">{product.description}</p>
+                  <p className="text-sm md:text-base text-white mb-2">
                     Category: <span>{product.category}</span> / Subcategory: <span>{product.subcategory}</span>
                   </p>
                 </div>
@@ -262,7 +258,7 @@ function AllProduct() {
               </li>
             ))
           ) : (
-            <li className="text-gray-200 text-center">
+            <li className="text-gray-500 font-Roboto font-medium text-center">
               No products found.
             </li>
           )}
